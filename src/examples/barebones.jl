@@ -50,7 +50,7 @@ end
 
 initial_sample_filename = "./initial.txt"
 transition_sample_filename = "./transition.txt"
-sample_number = 10
+sample_number = 1
 
 sim = initialize_simulation(bReadSampleFromFile = true, initial_sample_filename = initial_sample_filename, transition_sample_filename = transition_sample_filename)
 
