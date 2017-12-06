@@ -384,6 +384,7 @@ function bn_sample(G, r, N, alpha, boundaries, num_samples; initial_dist = nothi
                 end
 
                 S[sample_index, i] = select_random(N[i][:, j] + alpha[i][:, j])
+                println("Setting S[", sample_index, ", ", i, "] = ", S[sample_index, i])
             else
                 f = initial_dist[i]
 
