@@ -666,7 +666,7 @@ function update_psi(state1, state2)
     elseif x >= 0 && y <= 0
         psi = atand(y / x) + 360
     else
-        error("None worked x is ", x, " and y is ", y)
+        error("None worked x2 is ", x2, " and y2 is ", y2)
     end
 
     return psi

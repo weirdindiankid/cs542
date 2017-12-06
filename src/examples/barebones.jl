@@ -66,36 +66,3 @@ addObserver(adm_2, x -> push!(AC2_trajectory_, x))
 
 
 simulate(sim, bTCAS = false, sample_number = sample_number)
-
-
-AC1_trajectory = zeros(length(AC1_trajectory_), 4)
-AC2_trajectory = zeros(length(AC2_trajectory_), 4)
-
-for i = 1:length(AC1_trajectory_)
-    AC1_trajectory[i, :] = AC1_trajectory_[i]
-    AC2_trajectory[i, :] = AC2_trajectory_[i]
-end
-
-
-AC1_trajectory_ = Vector{Float64}[]
-AC2_trajectory_ = Vector{Float64}[]
-
-simulate(sim, bTCAS = true, sample_number = sample_number)
-
-
-AC1_trajectory_tcas = zeros(length(AC1_trajectory_), 4)
-AC2_trajectory_tcas = zeros(length(AC2_trajectory_), 4)
-
-for i = 1:length(AC1_trajectory_)
-    AC1_trajectory_tcas[i, :] = AC1_trajectory_[i]
-    AC2_trajectory_tcas[i, :] = AC2_trajectory_[i]
-end
-
-
-labels = ["A, L, chi(1: front, 2: back), beta(deg), C1, C2, hmd(ft), vmd(ft)", "time(sec), x_1(ft), y_1(ft), h_1(ft), x_2(ft), y_2(ft), h_2(ft)"]
-
-initial = [aem.A, aem.L, aem.geometry_at_TCA[1], aem.geometry_at_TCA[2], aem.C[1], aem.C[2], aem.geometry_at_TCA[3], aem.geometry_at_TCA[4]]
-
-SimulationResult = Any[labels, initial, AC1_trajectory, AC2_trajectory, AC1_trajectory_tcas, AC2_trajectory_tcas]
-
-save("result.jld", "data", SimulationResult)
