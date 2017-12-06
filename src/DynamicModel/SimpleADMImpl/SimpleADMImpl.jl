@@ -157,8 +157,8 @@ function simulateDynamicModel(adm::SimpleADM, command::SimpleADMCommand)
     h_d_curr = h_d_prev + h_dd * adm.timestep
     command.h_d = h_d_curr #propagated to the next time step as prev
 
-    @test t == t_curr
-    @test t_prev + 1 == t_curr
+    #@test t == t_curr
+    #@test t_prev + 1 == t_curr
 
     dt = adm.timestep / adm.number_of_substeps
 
