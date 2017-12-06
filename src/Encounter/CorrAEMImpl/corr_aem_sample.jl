@@ -373,7 +373,7 @@ function bn_sample(G, r, N, alpha, boundaries, num_samples; initial_dist = nothi
     end
 
     for sample_index = 1:num_samples
-        # generate each sample
+        # Generate each sample
         for i = order
             if initial_dist == nothing
                 parents = G[:, i]
