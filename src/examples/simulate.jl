@@ -371,6 +371,8 @@ end
 
 function parse_commandline()
 
+    println("Collision Avoidance System Safety Assessment Tool\r\n")
+
     settings = ArgParseSettings()
 
     settings.description = "Airspace Encounter Simulation"
