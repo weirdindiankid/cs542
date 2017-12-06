@@ -285,6 +285,7 @@ function generateEncounter(aem::CorrAEM; sample_number = 0, b_simulate = true)
     end
 
     if aem.b_read_from_file
+        println("read_from_file is true")
         if sample_number > 0
             reset_sample_from_file(aem)
 
@@ -457,13 +458,16 @@ end
 function generateEncountersToFile(aem::CorrAEM; file_format = "")
 
     if isfile(aem.initial_sample_filename)
+        println("Removing ", aem.initial_sample_filename)
         rm(aem.initial_sample_filename)
     end
 
     if isfile(aem.transition_sample_filename)
+        println("Removing ", aem.transition_sample_filename)
         rm(aem.transition_sample_filename)
     end
 
+    println("write_to_file is ", aem.b_write_to_file, " file_format_orig is ", aem.file_format)
     b_write_to_file_orig = aem.b_write_to_file
     file_format_orig = aem.file_format
 

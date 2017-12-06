@@ -207,7 +207,11 @@ end
 function exceeds_thresh(q::Queue{Float64}, thresh::Float64)
     x = first(q)
     for y in q
-        x = abs(x-y) <= thresh ? y : return true
+        if abs(x-y) > thresh
+            return true
+        else
+            x = y
+        end
     end
     false
 end

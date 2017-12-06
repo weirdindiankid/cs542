@@ -1,4 +1,4 @@
-using Gallium
+#using Gallium
 using SISLES
 
 const PARAMFILE = "cor.txt"
@@ -27,7 +27,7 @@ function gen_encounters(; parameter_file=PARAMFILE, initial_sample_filename=INIT
     aem = CorrAEM(parameter_file, initial_sample_filename, number_of_initial_samples,
         transition_sample_filename, number_of_transition_samples)
 
-    Gallium.breakpoint("corr_aem_sample.jl", 383)
+    #Gallium.breakpoint("corr_aem_sample.jl", 383)
 
     Encounter.generateEncountersToFile(aem)
 end

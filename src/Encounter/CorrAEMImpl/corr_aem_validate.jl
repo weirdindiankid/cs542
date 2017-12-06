@@ -38,7 +38,8 @@ function validate_initial(aem)
         sample_dist[i] = zeros(Int, params.r_initial[i])
     end
 
-    for line = eachline(f)
+
+    for line = eachline(f) #(ix, line) in enumerate(eachline(f))
         values = float(split(chomp(line)))
 
         # 1       id
@@ -61,7 +62,7 @@ function validate_initial(aem)
                 println("i: ", i, ", value: ", Int(values[i]), ", boundary: ", params.r_initial[i-1])
                 error("The value violates the boundary.")
             end
-
+            #println("Updating sample_dist[", i-1, "][", Int(values[i]), "] += 1")
             sample_dist[i - 1][Int(values[i])] += 1
         end
 
@@ -96,15 +97,6 @@ function validate_initial(aem)
     for i = 1:params.n_initial
         sample_prob[i] = sample_dist[i] / sum(sample_dist[i])
     end
-
-#    for i = 1:params.n_initial
-#        if !isempty(find(x -> (x > 5), abs((sample_prob[i] - marginal_prob[i]) ./ marginal_prob[i] * 100)))
-#            println(i)
-#            println()
-#            println(marginal_prob[i])
-#            println(sample_prob[i])
-#        end
-#    end
 
     for i = 1:params.n_initial
         println("variable #: ", i)

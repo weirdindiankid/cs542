@@ -467,13 +467,16 @@ function asub2ind(siz, x)
 #   NDX = ASUB2IND(SIZ,X) returns the linear index NDX of the element in a
 #   matrix of dimension SIZ associated with subscripts specified in X.
 
-    k = [1; cumprod(siz[1:end-1])]
-    ndx = k' * (x - 1) + 1
-    lindex = convert(Int, ndx[1])
+     #k = [1; cumprod(siz[1:end-1])]
+     #ndx = k' * (x' - 1) + 1
+     #lindex = convert(Int, ndx[1])
 
-    #@assert lindex == sub2ind(siz, map(Int64, x)...) #different answer than sub2ind
+     println("siz is ", siz, " while x is ", x)
 
-    lindex 
+     lindex = sub2ind(size(siz), map(Int64, x)...)
+     #@assert lindex == sub2ind(siz, map(Int64, x)...) #different answer than sub2ind
+
+     lindex 
 end
 
 function bn_sort(G)

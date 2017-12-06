@@ -21,7 +21,7 @@ function outputGFormatString(v::Real)
         digits = temp[1]
         exponent = temp[2]
     else
-        error("not a valid number")
+        error("not a valid number: ", v)
     end
 
     b_dot = false
@@ -46,7 +46,7 @@ function outputGFormatString(v::Real)
             end
         elseif digits[i] == '-'
         else
-            error("not a valid number")
+            error("not a valid number: ", v)
         end
     end
 
