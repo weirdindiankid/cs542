@@ -475,7 +475,7 @@ function asub2ind(siz, x)
      #ndx = k' * (x' - 1) + 1
      #lindex = convert(Int, ndx[1])
 
-     #println("siz is ", siz, " while x is ", x)
+     println("siz is ", siz, " while x is ", x)
 
      lindex = sub2ind(size(siz), map(Int64, x)...)
      #@assert lindex == sub2ind(siz, map(Int64, x)...) #different answer than sub2ind
