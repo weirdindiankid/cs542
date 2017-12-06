@@ -458,7 +458,8 @@ function select_random(weights)
     return index
 end
 
-#can't replace this with built-in sub2ind...
+# Can't replace this with built-in sub2ind...
+# NB: This needs to be checked for accuracy.
 function asub2ind(siz, x)
 # ASUB2IND Linear index from multiple subscripts.
 #   Returns a linder index from multiple subscripts assuming a matrix of a
@@ -471,7 +472,7 @@ function asub2ind(siz, x)
      #ndx = k' * (x' - 1) + 1
      #lindex = convert(Int, ndx[1])
 
-     println("siz is ", siz, " while x is ", x)
+     #println("siz is ", siz, " while x is ", x)
 
      lindex = sub2ind(size(siz), map(Int64, x)...)
      #@assert lindex == sub2ind(siz, map(Int64, x)...) #different answer than sub2ind
