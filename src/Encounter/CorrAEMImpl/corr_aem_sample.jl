@@ -485,7 +485,7 @@ function asub2ind(siz, x)
      println("lindex is ", lindex, " while spandex is ", spandex)
      #@assert lindex == sub2ind(siz, map(Int64, x)...) #different answer than sub2ind
 
-     lindex 
+     spandex 
 end
 
 function bn_sort(G)
