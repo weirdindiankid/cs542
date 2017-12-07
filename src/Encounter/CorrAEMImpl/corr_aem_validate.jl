@@ -85,7 +85,7 @@ function validate_initial(aem)
         hmd_ft = 6076.12 * values[16]
         vmd = values[17]
 
-        if hmd_ft <= 500 && vmd <= 100
+        if hmd_ft <= 500 && vmd <= 200
             n_nmac += 1
         end
 
