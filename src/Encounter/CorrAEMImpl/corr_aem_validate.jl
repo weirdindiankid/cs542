@@ -112,6 +112,8 @@ function validate_initial(aem)
         println()
     end
 
+    println("n_nmac: ", n_nmac, " n_lines: ", n_lines)
+    println()
     println("P(NMAC | enc, no TCAS) = ", n_nmac / n_lines, " ($n_nmac / $n_lines)")
     println()
 end
