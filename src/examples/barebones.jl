@@ -61,8 +61,8 @@ AC2_trajectory_ = Vector{Float64}[]
 
 adm_1, adm_2 = sim.parameters.dm
 
-addObserver(adm_1, ,"adm_update", x -> push!(AC1_trajectory_, x))
-addObserver(adm_2, , "adm_update", x -> push!(AC2_trajectory_, x))
+addObserver(adm_1, "adm_update", x -> push!(AC1_trajectory_, x))
+addObserver(adm_2, "adm_update", x -> push!(AC2_trajectory_, x))
 
 
 simulate(sim, bTCAS = false, sample_number = sample_number)
