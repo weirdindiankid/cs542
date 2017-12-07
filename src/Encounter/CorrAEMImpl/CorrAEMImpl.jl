@@ -791,12 +791,9 @@ function read_sample_from_file(aem, number_of_transition_samples)
     if line == ""
         close(aem.f_init)
         aem.f_init = nothing
-        println("Blank line reading file ", aem.f_init)
         initial = nothing
     else
-        println("There's luck yet ", line)
         initial = float(split(chomp(line)))
-        println("initial appears to be ", initial)
     end
 
 
