@@ -321,7 +321,7 @@ function dbn_sample(G_initial, G_transition, temporal_map, r, N_initial, N_trans
 
                 j = 1
                 if !isempty(find(parents))
-                    j = asub2ind(r[parents], x[parents'])
+                    j = asub2ind(r[parents], x[parents]')
                 end
 
                 x[i] = select_random(N_transition[i][:, j] + dirichlet_transition[i][:, j])
