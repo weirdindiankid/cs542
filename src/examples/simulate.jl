@@ -190,8 +190,8 @@ function run_simulation_for_validation(; sample_number = 1)
 
     adm_1, adm_2 = sim.parameters.dm
 
-    addObserver(adm_1, x -> push!(AC1_trajectory_, x))
-    addObserver(adm_2, x -> push!(AC2_trajectory_, x))
+    addObserver(adm_1, "adm_simulate", x -> push!(AC1_trajectory_, x))
+    addObserver(adm_2, "adm_simulate", x -> push!(AC2_trajectory_, x))
 
 
     simulate(sim, sample_number = sample_number)
