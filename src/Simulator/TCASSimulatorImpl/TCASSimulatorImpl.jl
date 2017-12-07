@@ -111,9 +111,9 @@ function simulate(sim::AbstractSimulator; bTCAS = false, sample_number = 0)
 
 
     if sample_number == 0
-        Encounter.generateEncounter(aem)
+        generateEncounter(aem)
     else
-        Encounter.generateEncounter(aem, sample_number = sample_number)
+        generateEncounter(aem, sample_number = sample_number)
     end
 
     initial_coords = zeros(number_of_aircraft, 3)

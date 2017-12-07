@@ -122,7 +122,7 @@ addObserver(aem::LLAEM, f::Function) = add_observer(aem.observer, f)
 addObserver(aem::LLAEM, tag::AbstractString, f::Function) = add_observer(aem.observer, tag, f)
 
 
-function generateEncounter(aem::LLAEM, sample_number::Int)
+function generateEncounter(aem::LLAEM; sample_number = 0)
 
     if sample_number > 0
         reset_sample_from_file(aem)
