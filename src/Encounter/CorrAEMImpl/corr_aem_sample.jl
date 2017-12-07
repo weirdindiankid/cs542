@@ -475,9 +475,14 @@ function asub2ind(siz, x)
      #ndx = k' * (x' - 1) + 1
      #lindex = convert(Int, ndx[1])
 
-     println("siz is ", siz, " while x is ", x)
+     # println("siz is ", siz, " while x is ", x)
 
      lindex = sub2ind(size(siz), map(Int64, x)...)
+     k = [1; cumprod(siz[1:end-1])]
+     ndx = k' * (x' - 1) + 1
+     spandex = convert(Int, ndx[1])
+
+     println("lindex is ", lindex, " while spandex is ", spandex)
      #@assert lindex == sub2ind(siz, map(Int64, x)...) #different answer than sub2ind
 
      lindex 
