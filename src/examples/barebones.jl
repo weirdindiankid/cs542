@@ -50,7 +50,7 @@ end
 
 initial_sample_filename = "./initial.txt"
 transition_sample_filename = "./transition.txt"
-sample_number = 1
+sample_number = 10
 
 sim = initialize_simulation(bReadSampleFromFile = true, initial_sample_filename = initial_sample_filename, transition_sample_filename = transition_sample_filename)
 
@@ -61,8 +61,8 @@ AC2_trajectory_ = Vector{Float64}[]
 
 adm_1, adm_2 = sim.parameters.dm
 
-addObserver(adm_1, x -> push!(AC1_trajectory_, x))
-addObserver(adm_2, x -> push!(AC2_trajectory_, x))
+addObserver(adm_1, ,"adm_update", x -> push!(AC1_trajectory_, x))
+addObserver(adm_2, , "adm_update", x -> push!(AC2_trajectory_, x))
 
 
 simulate(sim, bTCAS = false, sample_number = sample_number)
