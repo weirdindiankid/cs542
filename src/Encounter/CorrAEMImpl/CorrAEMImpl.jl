@@ -841,11 +841,13 @@ end
 function reset_sample_from_file(aem)
 
     if aem.f_init != nothing
+        println("aem.f_init is not empty. Closing aem.f_init")
         close(aem.f_init)
         aem.f_init = nothing
     end
 
     if aem.f_tran != nothing
+        println("aem.f_tran is not empty. Closing aem.f_tran")
         close(aem.f_tran)
         aem.f_tran = nothing
     end
