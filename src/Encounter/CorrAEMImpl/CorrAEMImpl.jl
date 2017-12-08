@@ -851,6 +851,8 @@ function reset_sample_from_file(aem)
         close(aem.f_tran)
         aem.f_tran = nothing
     end
+
+    println("reset_sample_from_file called.")
 end
 
 #mods x to the range [-b, b]
