@@ -287,11 +287,8 @@ function generateEncounter(aem::CorrAEM; sample_number = 0, b_simulate = true)
     if aem.b_read_from_file
         println("read_from_file is true")
         if sample_number > 0
-            println("resetting")
             reset_sample_from_file(aem)
-            println("sample_number is ", sample_number)
             for i = 1:sample_number
-                println("i is ", i)
                 states = read_sample_from_file(aem, aem.number_of_transition_samples)
 
                 if states == nothing
@@ -842,18 +839,15 @@ end
 function reset_sample_from_file(aem)
 
     if aem.f_init != nothing
-        println("aem.f_init is not empty. Closing aem.f_init")
         close(aem.f_init)
         aem.f_init = nothing
     end
 
     if aem.f_tran != nothing
-        println("aem.f_tran is not empty. Closing aem.f_tran")
         close(aem.f_tran)
         aem.f_tran = nothing
     end
 
-    println("reset_sample_from_file called.")
 end
 
 #mods x to the range [-b, b]
