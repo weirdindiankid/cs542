@@ -289,7 +289,7 @@ function generateEncounter(aem::CorrAEM; sample_number = 0, b_simulate = true)
         if sample_number > 0
             println("resetting")
             reset_sample_from_file(aem)
-
+            println("sample_number is ", sample_number)
             for i = 1:sample_number
                 states = read_sample_from_file(aem, aem.number_of_transition_samples)
 
