@@ -2,12 +2,18 @@
 
 using SISLES
 using Util
+using HDF5, JLD
+using PyPlot
 
 const PARAMFILE = "../Encounter/CorrAEMImpl/params/cor.txt"
 const INITFILE = "initial.txt"
 const TRANFILE = "transition.txt"
 const NSAMPLES = 100
 const NTRANS = 50
+
+
+aem = CorrAEM(PARAMFILE, INITFILE, NSAMPLES,
+        TRANFILE, NTRANS)
 
 function validate_initial(aem)
 
@@ -91,26 +97,13 @@ function validate_initial(aem)
 
     close(f)
 
-    for i = 1:params.n_initial
-        sample_prob[i] = sample_dist[i] / sum(sample_dist[i])
-    end
+    SimulationResult = load("result.jld", "data")
+    labels, initial, AC1_trajectory, AC2_trajectory = SimulationResult
 
-    for i = 1:params.n_initial
-        println("variable #: ", i)
-
-        for j = 1:params.r_initial[i]
-            print(marginal_dist[i][j], " ")
-            print(outputGFormatString(marginal_prob[i][j]), " ")
-            print(sample_dist[i][j], " ")
-            print(outputGFormatString(sample_prob[i][j]), " ")
-            @printf("%.2f%%\n", abs((sample_prob[i][j] - marginal_prob[i][j]) / marginal_prob[i][j] * 100))
-        end
-
-        println()
-    end
 
     println("n_nmac: ", n_nmac, " n_lines: ", n_lines)
     println()
     println("P(NMAC | enc, no TCAS) = ", n_nmac / n_lines, " ($n_nmac / $n_lines)")
+
     println()
 end
