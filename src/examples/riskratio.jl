@@ -1,5 +1,7 @@
-using Util
+
+
 using SISLES
+using Util
 
 const PARAMFILE = "../Encounter/CorrAEMImpl/params/cor.txt"
 const INITFILE = "initial.txt"
