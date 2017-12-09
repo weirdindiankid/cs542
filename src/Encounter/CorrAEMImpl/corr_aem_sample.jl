@@ -470,7 +470,7 @@ function asub2ind(siz, x)
 #   matrix of dimension SIZ associated with subscripts specified in X.
 
      k = [1; cumprod(siz[1:end-1])]
-     ndx = k' * (x - 1) + 1
+     ndx = k' * (x' - 1) + 1
      lindex = convert(Int, ndx[1])
 
      # @assert lindex == sub2ind(siz, map(Int64, x)...) #different answer than sub2ind
