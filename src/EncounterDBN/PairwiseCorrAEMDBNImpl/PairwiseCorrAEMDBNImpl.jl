@@ -118,7 +118,7 @@ const map_G2L = Dict(2 => 1, 9 => 2, 11 => 3, 13 => 4, 17 => 5, 19 => 6) #global
 const map_L2G = Dict(1 => 2, 2 => 9, 3 => 11, 4 => 13, 5=> 17, 6 => 19) #local to global
 const map_var2ind_L = Dict(:L => 1, :v_d => 2, :h_d0 => 3, :psi_d0 => 4, :h_d1 => 5, :psi_d1 => 6) #variable names to local
 const map_ind2var_L = Dict(1 => :L, 2 => :v_d, 3 => :h_d0, 4 => :psi_d0, 5 => :h_d1, 6 => :psi_d1) #local to variable names
-const temporal_map = [3 5; 4 6] #[dynamic_variables0; dynamic_variables1]
+const temporal_map = [3 5] #[3 5; 4 6] #[dynamic_variables0; dynamic_variables1]
 
 function generate_encounter(dbn::PairwiseCorrAEMDBN; sample_number::Int64 = 0)
 

@@ -157,8 +157,8 @@ function simulateDynamicModel(adm::SimpleADM, command::SimpleADMCommand)
     h_d_curr = h_d_prev + h_dd * adm.timestep
     command.h_d = h_d_curr #propagated to the next time step as prev
 
-    @test t == t_curr
-    @test t_prev + 1 == t_curr
+    #@test t == t_curr
+    #@test t_prev + 1 == t_curr
 
     dt = adm.timestep / adm.number_of_substeps
 
@@ -220,10 +220,10 @@ function simulateDynamicModel(adm::SimpleADM, command::SimpleADMCommand)
         @notify_observer(adm.observer, "adm_simulate", [t_sim, x_n, y_n, h_n])
     end
 
-    @test_approx_eq_eps t_sim (t_curr + adm.timestep) 0.001
-    @test_approx_eq_eps v_d v_d_curr 0.001
-    @test_approx_eq_eps h_d h_d_curr 0.001
-    @test_approx_eq_eps psi_d psi_d_curr 0.001
+    #@test_approx_eq_eps t_sim (t_curr + adm.timestep) 0.001
+    #@test_approx_eq_eps v_d v_d_curr 0.001
+    #@test_approx_eq_eps h_d h_d_curr 0.001
+    #@test_approx_eq_eps psi_d psi_d_curr 0.001
 
     adm.state = SimpleADMState(t_curr + adm.timestep, x_n, y_n, h_n, v_n, psi_n)
     adm.command = deepcopy(command)

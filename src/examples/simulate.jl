@@ -138,6 +138,9 @@ function run_simulation_for_comparison(; initial_sample_filename = "initial.txt"
 
     adm_1, adm_2 = sim.parameters.dm
 
+    addObserver(adm_1, "adm_init", x -> push!(AC1_trajectory_, x))
+    addObserver(adm_1, "adm_init", x -> push!(AC2_trajectory_, x))
+    
     addObserver(adm_1, "adm_simulate", x -> push!(AC1_trajectory_, x))
     addObserver(adm_2, "adm_simulate", x -> push!(AC2_trajectory_, x))
 
