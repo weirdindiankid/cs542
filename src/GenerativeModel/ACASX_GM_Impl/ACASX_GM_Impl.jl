@@ -61,7 +61,7 @@ type ACASX_GM_params
     libcas_config::ASCIIString #Path to libcas config file
 end
 ACASX_GM_params() = ACASX_GM_params(1, UInt64(12), 500.0, 100.0, 50, 2,
-                                        :LLCEMDBN, :ICAO, :CCAS, :EvE, :LLADM,
+                                        :LLCEMDBN, :EvE, :ICAO, :ADD, :LLADM,
                                         true, "/acas/CASSATT/src/Encounter/CorrAEMImpl/params/cor.txt", 
                                         :DBN, "/acas/CASSATT/src/examples/initial.txt",
                                         "/acas/CASSATT/src/examples/transition.txt", "", "")
