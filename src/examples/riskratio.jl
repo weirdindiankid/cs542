@@ -6,9 +6,9 @@ using HDF5, JLD
 using PyPlot
 
 const PARAMFILE = "../Encounter/CorrAEMImpl/params/cor.txt"
-const INITFILE = "initial.txt"
-const TRANFILE = "transition.txt"
-const NSAMPLES = 100
+const INITFILE = "rr_initial.txt"
+const TRANFILE = "rr_transition.txt"
+const NSAMPLES = 10000
 const NTRANS = 50
 
 
