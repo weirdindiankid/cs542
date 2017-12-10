@@ -10,7 +10,9 @@ export
 
     ACASX_ADD,
     ACASXInput,
-    ACASXOutput
+    ACASXOutput,
+    initialize,
+    update
 
 import Compat.ASCIIString
 
