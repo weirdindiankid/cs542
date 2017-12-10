@@ -214,7 +214,6 @@ function update(aem::LLAEM, aircraft_number::Int)
 end
 
 function getTrajectory(aem::LLAEM, aircraft_number::Int)
-
     return reshape(aem.dynamic_states[aircraft_number, :, 1:4], aem.dn_state_index[aircraft_number], 4)
 end
 

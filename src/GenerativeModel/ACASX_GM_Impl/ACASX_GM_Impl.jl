@@ -62,7 +62,9 @@ type ACASX_GM_params
 end
 ACASX_GM_params() = ACASX_GM_params(1, UInt64(0), 500.0, 100.0, 50, 2,
                                         :LLCEMDBN, :ICAO, :CCAS, :EvE, :LLADM,
-                                        true, "", :DBN, "", "", "", "")
+                                        true, "/acas/CASSATT/src/Encounter/CorrAEMImpl/params/cor.txt", 
+                                        :DBN, "/acas/CASSATT/src/examples/initial.txt",
+                                        "/acas/CASSATT/src/examples/transition.txt", "", "")
 
 type ACASX_GM <: AbstractGenerativeModel
     params::ACASX_GM_params
