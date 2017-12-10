@@ -48,7 +48,7 @@ type ACASX_ADD <: AbstractCollisionAvoidanceSystem
     cas.quant = equipage == EQUIPAGE_TCAS ? 25 : 100
     setRecord(cas.coord, cas.my_id,
               ACASXCoordRecord(cas.my_id, equipage, cas.quant, cas.max_intruders))
-    reset(cas.casShared)
+    #reset(cas.casShared)
     return cas
   end
 end
