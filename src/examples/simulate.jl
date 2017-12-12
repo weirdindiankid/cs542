@@ -452,6 +452,9 @@ function parse_commandline()
         "run"
             help = "simulate trajectories"
             action = :command
+        "multiple"
+            help = "run multiple simulations"
+            action = :command
         "compare"
             help = "compare simulated trajectories with/out TCAS"
             action = :command
