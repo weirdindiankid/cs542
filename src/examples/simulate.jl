@@ -5,6 +5,7 @@ using SISLES
 using ArgParse
 using HDF5, JLD
 using PyPlot
+using RiskRatio
 using PyCall
 
 # Examples
