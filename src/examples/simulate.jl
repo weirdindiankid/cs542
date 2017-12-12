@@ -126,6 +126,77 @@ function run_simulation(; bTCAS = false, bReadSampleFromFile = false, initial_sa
     save("result.jld", "data", SimulationResult)
 end
 
+# Multiple comparisons
+
+function run_multiple_tcas_sims(; initial_sample_filename = "initial.txt", transition_sample_filename = "transition.txt", sample_number = 1)
+
+    sim = initialize_simulation(bReadSampleFromFile = true, initial_sample_filename = initial_sample_filename, transition_sample_filename = transition_sample_filename)
+
+    aem = sim.parameters.em
+
+    AC1_trajectory_ML = [Vector{Float64}]
+    AC2_trajectory_ML = [Vector{Float64}]
+
+    AC1_trajectory_NC = [Vector{Float64}]
+    AC2_trajectory_NC = [Vector{Float64}]
+
+    AC1_trajectory_ = Vector{Float64}[]
+    AC2_trajectory_ = Vector{Float64}[]
+
+    adm_1, adm_2 = sim.parameters.dm
+    
+    addObserver(adm_1, "adm_simulate", x -> push!(AC1_trajectory_, x))
+    addObserver(adm_2, "adm_simulate", x -> push!(AC2_trajectory_, x))
+
+    for i = [1:sample_number]
+      simulate(sim, bTCAS = false, sample_number = sample_number)
+      AC1_trajectory = zeros(length(AC1_trajectory_), 4)
+      AC2_trajectory = zeros(length(AC2_trajectory_), 4)
+
+      for i = 1:length(AC1_trajectory_)
+        AC1_trajectory[i, :] = AC1_trajectory_[i]
+        AC2_trajectory[i, :] = AC2_trajectory_[i]
+      end
+
+      push!(AC1_trajectory_NC, AC1_trajectory)
+      push!(AC2_trajectory_NC, AC2_trajectory)
+
+      AC1_trajectory_ = Vector{Float64}[]
+      AC2_trajectory_ = Vector{Float64}[]
+
+
+    simulate(sim, bTCAS = true, sample_number = sample_number)
+
+
+    AC1_trajectory_tcas = zeros(length(AC1_trajectory_), 4)
+    AC2_trajectory_tcas = zeros(length(AC2_trajectory_), 4)
+
+    for i = 1:length(AC1_trajectory_)
+        AC1_trajectory_tcas[i, :] = AC1_trajectory_[i]
+        AC2_trajectory_tcas[i, :] = AC2_trajectory_[i]
+    end
+
+    push!(AC1_trajectory_ML, AC1_trajectory_tcas)
+    push!(AC2_trajectory_ML, AC2_trajectory_tcas)
+
+    AC1_trajectory_tcas = zeros(length(AC1_trajectory_), 4)
+    AC2_trajectory_tcas = zeros(length(AC2_trajectory_), 4)
+
+
+    labels = ["A, L, chi(1: front, 2: back), beta(deg), C1, C2, hmd(ft), vmd(ft)", "time(sec), x_1(ft), y_1(ft), h_1(ft), x_2(ft), y_2(ft), h_2(ft)"]
+
+    initial = [aem.A, aem.L, aem.geometry_at_TCA[1], aem.geometry_at_TCA[2], aem.C[1], aem.C[2], aem.geometry_at_TCA[3], aem.geometry_at_TCA[4]]
+
+    SimulationResult = Any[labels, initial, AC1_trajectory_NC, AC2_trajectory_NC, AC1_trajectory_ML, AC2_trajectory_ML]
+
+    save("mresult.jld", "data", SimulationResult)
+
+    end
+end
+
+
+# Multiple comparisons
+
 
 function run_simulation_for_comparison(; initial_sample_filename = "initial.txt", transition_sample_filename = "transition.txt", sample_number = 1)
 
@@ -489,7 +560,8 @@ function main()
 
     elseif parsed_args["%COMMAND%"] == "generate"
         generate_samples_to_file(parsed_args["generate"]["init_file"], parsed_args["generate"]["ninit"], parsed_args["generate"]["tran_file"], parsed_args["generate"]["ntran"], parsed_args["generate"]["param_file"])
-
+    elseif parsed_args["%COMMAND%"] == "multiple"
+        run_multiple_tcas_sims()
     elseif parsed_args["%COMMAND%"] == "plot"
         if parsed_args["plot"]["compare"]
             plot_result_for_comparison()

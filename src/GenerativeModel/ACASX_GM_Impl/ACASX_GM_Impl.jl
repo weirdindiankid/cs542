@@ -164,6 +164,12 @@ type ACASX_GM <: AbstractGenerativeModel
                 sim.cas[i] = CollisionAvoidanceSystem.ACASX_ADD(i, p.num_aircraft,
                                 sim.coord, equip)
             end
+        elseif p.cas_model == :SimpleTCAS
+            sim.cas = Array(AbstractCollisionAvoidanceSystem, p.num_aircraft)
+            sim.cas[1] = SimpleTCAS()
+            for i = 2:p.num_aircraft
+                sim.cas[i] = SimpleTCAS()
+            end
         else
             error("ACASX_GM_Impl: No such CAS model ($(p.cas_model))")
         end
