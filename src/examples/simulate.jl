@@ -466,6 +466,16 @@ function parse_commandline()
             action = :command
     end
 
+    @add_arg_table settings ["multiple"] begin
+        "--init_file"
+          help = "initial sample file"
+          arg_type = AbstractString
+          default = "initial.txt"
+      "--tran_file"
+          help = "transition sample file"
+          arg_type = AbstractString
+          default = "transition.txt"
+    end
     @add_arg_table settings["run"] begin
         "--tcas", "-t"
             help = "simulate with TCAS"
