@@ -137,8 +137,8 @@ function run_multiple_tcas_sims(; initial_sample_filename = "initial.txt", trans
     AC1_trajectory_ML = Array{Float64,2}[]
     AC2_trajectory_ML = Array{Float64,2}[]
 
-    AC1_trajectory_NC = Array{Float64,2}][]
-    AC2_trajectory_NC = Array{Float64,2}][]
+    AC1_trajectory_NC = Array{Float64,2}[]
+    AC2_trajectory_NC = Array{Float64,2}[]
 
     AC1_trajectory_ = Vector{Float64}[]
     AC2_trajectory_ = Vector{Float64}[]
