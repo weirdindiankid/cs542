@@ -11,6 +11,8 @@ export
     GDQNACASSimulator
 
 
+using RiskRatio
+
 using AbstractSimulatorImpl
 using CommonInterfaces
 
@@ -97,7 +99,7 @@ convert(::Type{SimplePRResolutionAdvisory}, RA::GDQNACASResolutionAdvisory) = Si
 convert(::Type{SimplePRResolutionAdvisory}, RA::Void) = nothing
 
 
-function simulate(sim::AbstractSimulator; bTCAS = false, sample_number = 0)
+function simulate(sim::AbstractSimulator; bACAS = false, sample_number = 0)
 
     aem = sim.parameters.em
     pr = sim.parameters.pr
@@ -143,7 +145,7 @@ function simulate(sim::AbstractSimulator; bTCAS = false, sample_number = 0)
                 break
             end
 
-            if bTCAS
+            if bACAS
                 states = WorldModel.getAll(as)
                 output = Sensor.update(sr[i], convert(GDQNACASSensorInput, states))
                 RA = CollisionAvoidanceSystem.update(cas[i], convert(GDQNACASInput, output))
