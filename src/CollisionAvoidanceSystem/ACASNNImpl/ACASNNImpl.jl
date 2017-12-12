@@ -1,4 +1,6 @@
-# Filename: AC
+# Filename: ACASNNImpl.jl
+# Author: Dharmesh Tarapore
+# Description: Implements an initial version of the ACAS_NN.py file
 using SISLES
 using ArgParse
 using HDF5, JLD

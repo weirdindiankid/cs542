@@ -128,7 +128,7 @@ end
 
 # Multiple comparisons
 
-function run_multiple_tcas_sims(; initial_sample_filename = "initial.txt", transition_sample_filename = "transition.txt", sample_number = 1)
+function run_multiple_tcas_sims(; initial_sample_filename = "initial.txt", transition_sample_filename = "transition.txt", sample_number = 10)
 
     sim = initialize_simulation(bReadSampleFromFile = true, initial_sample_filename = initial_sample_filename, transition_sample_filename = transition_sample_filename)
 
