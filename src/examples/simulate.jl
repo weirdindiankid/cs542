@@ -158,7 +158,7 @@ function run_multiple_tcas_sims(; initial_sample_filename = "initial.txt", trans
         AC2_trajectory[i, :] = AC2_trajectory_[i]
       end
 
-      apped!(AC1_trajectory_NC, AC1_trajectory)
+      append!(AC1_trajectory_NC, AC1_trajectory)
       append!(AC2_trajectory_NC, AC2_trajectory)
 
       AC1_trajectory_ = Vector{Float64}[]
