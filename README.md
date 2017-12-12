@@ -1,4 +1,4 @@
-This is the RLES fork of SISLES.jl by Youngjun Kim.  This fork will soon be merged back into SISLES.jl.
+This is the CS 542 fork of SISLES.jl, originally designed by Youngjun Kim.  
 
 # SISLES
 
@@ -12,7 +12,6 @@ Youngjun Kim, Ph.D. Candidate, youngjun@stanford.edu
 
 Mykel Kochenderfer, Assistant Professor, mykel@stanford.edu
 
-
 ## Example
 
 To run example code, PyPlot and HDF5 are required.
@@ -21,8 +20,8 @@ To run example code, PyPlot and HDF5 are required.
 #!shell
 
 $ cd examples
-$ julia tcas_simulation.jl
-$ julia plot_simulation.jl
+$ julia simulate.jl
+
 ```
 
 
@@ -72,18 +71,19 @@ CollisionAvoidanceSystem/
     CollisionAvoidanceSystem.jl     collision avoidance system module
     AbstractCollisionAvoidanceSystemImpl.jl define abstract type for the module
     SimpleTCASImpl/                 simplified version of TCAS
+    GDQNACASImpl/.                  Initial implementation of the generalized deep reinforcement learning CAS
 
 Simulator/
     Simulator.jl                    simulator module
     AbstractSimulatorImpl.jl        define abstract type for the module
     TCASSimulatorImpl/              TCAS simulator
+    GDQNACASImpl/.                  Generalized deep reinforcement learning CAS simulator.
 
 examples/
-    tcas_simulation.jl              example of running simulator
-    plot_simulation.jl              example of plotting result
+    simulate.jl                     Entry point for most simulations
 ```
 
 
 ***
 
-*Updated: 07/09/2014*
+*Updated: 12/12/2017*
