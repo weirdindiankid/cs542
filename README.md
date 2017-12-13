@@ -34,7 +34,7 @@ $ julia simulate.jl
 
 ## Layout
 
-```
+
 #!text
 
 SISLES.jl                           Core Encounter simulation module
