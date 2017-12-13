@@ -1,22 +1,31 @@
 This is the CS 542 fork of SISLES.jl, originally designed by Youngjun Kim.  
 
-# SISLES
+# CS 542: Generalized Aircraft Collision Avoidance Through Deep Reinforcement Learning
 
-SISL + ES  
-= Stanford Intelligent Systems Laboratory + Encounter Simulation
-
+This is part of our final project for <i>CS 542: An Introduction to Machine Learning</i> with Professor Kate Saenko. In this project, we extend POMDPs to aircraft collision avoidance by modifying the action space on the basis of previously inferred information about aircraft state performance, allowing us to provide highly tailored collision avoidance resolution advisories.
 
 ## Authors
 
-Youngjun Kim, Ph.D. Candidate, youngjun@stanford.edu
+Dharmesh Tarapore, dharmesh@bu.edu
+Vincent Wahl, vinwah@bu.du
+Shantanu Bobhate, sbobhate@bu.edu
+Kasim Patel, kasimp93@bu.edu
 
-Mykel Kochenderfer, Assistant Professor, mykel@stanford.edu
+## Installation
 
-## Example
-
-To run example code, PyPlot and HDF5 are required.
+To install the simulator, PyPlot and HDF5 are required. Make sure you are running Julia v0.4 since other versions appear to break various things. For the simplest example, run the installation script from the root directory like so:
 
 ```
+julia install.jl
+
+```
+
+Once this succeeds, you are ready to begin using the simulator. To run a simulation, try:
+
+```
+julia examples/simulate.jl -h
+```
+
 #!shell
 
 $ cd examples
@@ -30,42 +39,42 @@ $ julia simulate.jl
 ```
 #!text
 
-SISLES.jl                           encounter simulation module
+SISLES.jl                           Core Encounter simulation module
 
 include/
-    SISLES.jl                       top-level include file for developers
-    CommonInterfaces.jl             list common interfaces for modules
+    SISLES.jl                       Top-level include file for developers
+    CommonInterfaces.jl             List common interfaces for modules
 
 common/
-    Util.jl                         utilility module
-    format_string.jl                output "%g" format string
-    ObserverImpl/                   observer pattern implementation for modules
+    Util.jl                         Utilility module
+    format_string.jl                Output "%g" format string
+    ObserverImpl/                   Observer pattern implementation for modules
 
 Encounter/
-    Encounter.jl                    encounter generation module
-    AbstractEncounterModelImpl.jl   define abstract type for the module
+    Encounter.jl                    Encounter generation module
+    AbstractEncounterModelImpl.jl   Defines the abstract type for the module
     CorAEMImpl/                     Correlated Airspace Encounter Model
     LLAEMImpl/                      Lincoln Laboratory Airspace Encounter Model
 
 PilotResponse/
-    PilotResponse.jl                pilot response module
-    AbstractPilotResponseImpl.jl    define abstract type for the module
-    SimplePilotResponseImpl/        simple model for pilot response
+    PilotResponse.jl                Pilot response module
+    AbstractPilotResponseImpl.jl    Defines the abstract type for the module
+    SimplePilotResponseImpl/        Simple model for pilot response
 
 DynamicModel/
-    DynamicModel.jl                 model for dynamics
-    AbstractDynamicModelImpl.jl     define abstract type for the module
-    SimpleADMImpl/                  simple model for aircraft dynamics
+    DynamicModel.jl                 Model for dynamics
+    AbstractDynamicModelImpl.jl     Defines the abstract type for the module
+    SimpleADMImpl/                  Simple model for aircraft dynamics
 
 WorldModel/
-    WorldModel.jl                   model representing world
-    AbstractWorldModelImpl.jl       define abstract type for the module
-    AirSpaceImpl/                   represent airspace
+    WorldModel.jl                   Model representing the world
+    AbstractWorldModelImpl.jl       Defines the abstract type for the module
+    AirSpaceImpl/                   Represents airspace
 
 Sensor/
-    Sensor.jl                       sensor module
-    AbstractSensorImpl.jl           define abstract type for the module
-    SimpleTCASSensorImpl/           simple TCAS sensor
+    Sensor.jl                       Sensor module
+    AbstractSensorImpl.jl           Defines the abstract type for the module
+    SimpleTCASSensorImpl/           Simple TCAS sensor
 
 CollisionAvoidanceSystem/
     CollisionAvoidanceSystem.jl     collision avoidance system module

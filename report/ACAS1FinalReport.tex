@@ -299,31 +299,6 @@ The core algorithm is divided between the GDQNACAS algorithm\footnote{Generalize
 \end{algorithm}
 The Q network and D states are implemented in Python, while the simulator is written in Julia modules that readily interface with Python.
 
-    % This is how you define a table: the [!hbt] means that LaTeX is forced (by the !) to place the table exactly here (by h), or if that doesnt work because of a pagebreak or so, it tries to place the table to the bottom of the page (by b) or the top (by t).
-    \begin{table}[!hbt]
-        % Center the table
-        \begin{center}
-        % Title of the table
-        \caption{Simulation Parameters}
-        \label{tab:simParameters}
-        % Table itself: here we have two columns which are centered and have lines to the left, right and in the middle: |c|c|
-        \begin{tabular}{|c|c|}
-            % To create a horizontal line, type \hline
-            \hline
-            % To end a column type &
-            % For a linebreak type \\
-            Information message length & $k=16000$ bit \\
-            \hline
-            Radio segment size & $b=160$ bit \\
-            \hline
-            Rate of component codes & $R_{cc}=1/3$\\
-            \hline
-            Polynomial of component encoders & $[1 , 33/37 , 25/37]_8$\\
-            \hline
-        \end{tabular}
-        \end{center}
-    \end{table}
-
     % If you have questions about how to write mathematical formulas in LaTeX, please read a LaTeX book or the 'Not So Short Introduction to LaTeX': tobi.oetiker.ch/lshort/lshort.pdf
 
     % This is how you include a eps figure in your document. LaTeX only accepts EPS or TIFF files.
@@ -354,8 +329,7 @@ Our cursory investigation of this new approach to airborne collision avoidance g
 \\The work done in this paper would not have been possible without the NAS correlated airspace encounter model, or the RLES software package,  both of which were designed by developed by Dr Mykel Kochenderfer at Stanford University. 
 
 \section{Roles}
-   % If you have questions about how to write mathematical formulas in LaTeX, please read a LaTeX book or the 'Not So Short Introduction to LaTeX': tobi.oetiker.ch/lshort/lshort.pdf
-    % This is how you define a table: the [!hbt] means that LaTeX is forced (by the !) to place the table exactly here (by h), or if that doesnt work because of a pagebreak or so, it tries to place the table to the bottom of the page (by b) or the top (by t).
+   Each team member put in approximately the same amount of work across different areas, thus helping us iterate faster. Individual team member roles and responsibilities are outlined below.
     \begin{table}[!hbt]
         % Center the table
         \begin{center}
