@@ -1,5 +1,3 @@
-This is the CS 542 fork of SISLES.jl, originally designed by Youngjun Kim.  
-
 # CS 542: Generalized Aircraft Collision Avoidance Through Deep Reinforcement Learning
 
 This is part of our final project for <i>CS 542: An Introduction to Machine Learning</i> with Professor Kate Saenko. In this project, we extend POMDPs to aircraft collision avoidance by modifying the action space on the basis of previously inferred information about aircraft state performance, allowing us to provide highly tailored collision avoidance resolution advisories.
