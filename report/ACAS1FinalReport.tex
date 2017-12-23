@@ -313,6 +313,19 @@ The Q network and D states are implemented in Python, while the simulator is wri
         \label{fig:tf_plot}
         \end{center}
     \end{figure}
+    
+     % This is how you include a eps figure in your document. LaTeX only accepts EPS or TIFF files.
+    \begin{figure}[!hbt]
+        % Center the figure.
+        \begin{center}
+        % Include the eps file, scale it such that it's width equals the column width. You can also put width=8cm for example...
+        \includegraphics[width=\columnwidth]{loss_function.png}
+        % Create a subtitle for the figure.
+        \caption{GDQNACAS loss function. The pronounced disturbances at the beginning correspond to target network parameter updates and become less obvious as the Q values converge. Motivation for using this specific loss function stems from a discussion of Q-learning in \cite{kochbook}.}
+        % Define the label of the figure. It's good to use 'fig:title', so you know that the label belongs to a figure.
+        \label{fig:lff_plot}
+        \end{center}
+    \end{figure}
 
 \section{Evaluation}
 Success is evaluated on the basis of two things:
@@ -320,8 +333,32 @@ Success is evaluated on the basis of two things:
 \item Risk Ratio and
 \item Computational cost
 \end{itemize}
-We define the risk ratio as the ratio of the probability of a near mid-air collision occurring given the collision avoidance system's assistance divided by the nominal probability of a collision in the absence of using any collision avoidance system. A comparison charting TCAS' risk ratio against our algorithm's is available in figure 12. GDQNACAS easily outperforms TCAS in the 15000 scripted encounters we simulated. Yet, this is not conclusive evidence for GNQDCAS' safety. Monte Carlo Tree Searches can help maximize the likelihood of specific encounters designed to fail collision avoidance systems and would likely provide a higher quality estimate of both algorithms' respective safety margins. Despite the training step taking over 4 hours to develop on an early 2013 MacBook Pro, we are convinced that running our code on customized hardware would have provided quicker results. 
-\\We also used the loss function as an effective signal to validate our approach. Unacceptable values output by the loss function in first iteration of our model made us research multiple causes\textemdash ranging from an error in the simulation framework, to model parameter considerations. Ultimately, redesigning the neural network to better approximate information entailed refining its reward component and using a different solver. We graph the differences between our initial loss function and its replacement in figure 13.
+We define the risk ratio as the ratio of the probability of a near mid-air collision occurring given the collision avoidance system's assistance divided by the nominal probability of a collision in the absence of using any collision avoidance system. A comparison charting TCAS' risk ratio against our algorithm's is available in Table \ref{tab:rrComparisons}. GDQNACAS easily outperforms TCAS in the 15000 scripted encounters we simulated. Yet, this is not conclusive evidence for GDQNACAS' safety. Monte Carlo Tree Searches can help maximize the likelihood of specific encounters designed to fail collision avoidance systems and would likely provide a higher quality estimate of both algorithms' respective safety margins. Despite the training step taking over 4 hours to develop on an early 2013 MacBook Pro, we are convinced that running our code on customized hardware would have provided quicker results. 
+\\We also used the loss function as an effective signal to validate our approach. Unacceptable values output by the loss function in first iteration of our model made us research multiple causes\textemdash ranging from an error in the simulation framework, to model parameter considerations. Ultimately, redesigning the neural network to better approximate information entailed refining its reward component and using a different solver. We graph our final loss function in figure \ref{fig:lff_plot}.
+
+    \begin{table}[!hbt]
+        % Center the table
+        \begin{center}
+        % Title of the table
+        \caption{Risk Ratio}
+        \label{tab:rrComparisons}
+        % Table itself: here we have two columns which are centered and have lines to the left, right and in the middle: |c|c|
+        \begin{tabular}{|c|c|c|}
+            % To create a horizontal line, type \hline
+            \hline
+            % To end a column type &
+            % For a linebreak type \\
+            \textbf{Collision Avoidance System} & \textbf{Risk Ratio} & \textbf{Number of Encounters} \\
+            \hline\hline
+            Nominal (No CAS) & 1.0 & 15,000\\
+            \hline
+            TCAS II & 0.061230 & 15,000 \\
+            \hline
+            GDQNACAS & 0.02071 & 15,000 \\
+            \hline
+        \end{tabular}
+        \end{center}
+    \end{table}
 
 \section{Conclusion}
 Our cursory investigation of this new approach to airborne collision avoidance gives us confidence that its potential benefits far outweigh its problems. While the system is admittedly averse to providing needless resolution advisories (given its reward function), adding more hidden layers would have likely helped us process state transitions better. 
